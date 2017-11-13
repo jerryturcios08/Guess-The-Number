@@ -8,7 +8,6 @@
 #include <cstdlib>
 #include <random>
 #include <ctime>
-
 using namespace std;
 
 void youVsCom();  // Player guesses number
@@ -64,7 +63,7 @@ void youVsCom () {
 
    // Data declarations
    int realNumber;
-   int guessNumber;
+   int guessNumber = 0;
    int numOfGuesses;
    int actionPrompt1;   // Needed for action prompt
 
@@ -163,7 +162,6 @@ void youVsCom () {
 void comVsYou() {
 
    // Data declarations
-   int range;  // This acts as the guessing range for the computer
    int guessNumberC;
    int numOfGuessesC;    // Number of guesses the computer made 
    int isItCorrect = 0;  // Used to verify if the computer guessed the right number
@@ -180,7 +178,7 @@ void comVsYou() {
    cout << "If the number is correct, you will tell it.\n";
    cout << "Then, the number of guesses the computer made\n";
    cout << "will be displayed after the game ends!\n\n";
-   cout << "Press enter to when you thought of a number...";
+   cout << "Press enter when you thought of a number...";
    cin.ignore();
    cin.get();  // Awaiting for player to click enter
 
@@ -189,6 +187,7 @@ void comVsYou() {
       // Data declarations
       int low = 1;
       int high = 100;
+      bool firstNum = true;   // Initializes to count first guess
 
       // Initializes the number of guesses to 0
       numOfGuessesC = 0;
@@ -199,6 +198,7 @@ void comVsYou() {
          // The computer will make a guess with the statement below based on the
          // lowest number and also the highest number. If the computer fails to 
          // guess the player's number, it will generate a new one. 
+         
          random_device rd;
          mt19937 gen(rd());
          uniform_int_distribution<> dis(low, high);
@@ -208,9 +208,10 @@ void comVsYou() {
 
          do {
 
-            // Shows how many guesses were made and choice to make
-            if (isItCorrect > 0 && isItCorrect < 4)   // Prevents count from increasing          
-               numOfGuessesC++;                       // when there is an invalid input
+            if (firstNum)        // Increases count when it is the first number
+               ++numOfGuessesC;  // because the computer already made a guess!!
+
+            // Shows how many guesses were made and choice to make 
             system("clear");
             cout << "Number of guesses so far: " << numOfGuessesC << endl;
             cout << "The computer guesses the number " << guessNumberC << ".\n\n";
@@ -220,6 +221,13 @@ void comVsYou() {
             cout << "3 - The number is correct!\n\n";
             cout << "Option: ";
             cin >> isItCorrect;
+            firstNum = false;
+
+            if ((isItCorrect > 0 && isItCorrect < 4) && isItCorrect != 3) {    
+
+               numOfGuessesC++;  // Prevents count from increasing when there is an invalid input
+
+            }
 
          } while (isItCorrect > 3 || isItCorrect < 1);
 
