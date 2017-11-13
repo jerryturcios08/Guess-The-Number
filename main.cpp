@@ -1,5 +1,5 @@
 //
-// Title : Guess the number (Version 2.5)
+// Title : Guess the number (Version 3.0)
 // Author: Jerry Turcios
 // DLM   : 11/13/2017
 //
@@ -7,6 +7,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <random>
+#include <limits>
 #include <ctime>
 using namespace std;
 
@@ -25,14 +26,21 @@ int main() {
          system("clear");
          cout << "\n\n     GUESS THE NUMBER     \n\n";
          cout << "     By Jerry Turcios     \n";
-         cout << "       Version  2.5     \n";
+         cout << "       Version  3.0     \n";
          cout << "\n\nSelect a game mode:\n\n";
-         cout << "1 - You vs Computer\n";
-         cout << "2 - Computer vs You\n";
+         cout << "1 - Player guesses\n";
+         cout << "2 - Computer guesses\n";
          cout << "3 - Quit\n\n";
          cout << "Game mode? ";
          cin >> gameMode;
 
+         if (gameMode > 3 || gameMode < 1) {
+
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(),'\n');
+
+         }
+        
       } while (gameMode > 3 || gameMode < 1); // Loop prevents invalid inputs
 
       if (gameMode == 1) {
@@ -69,9 +77,9 @@ void youVsCom () {
 
    // Title with instructions
    system("clear");
-   cout << "\n\n     You vs Computer     \n\n";
+   cout << "\n\n     PLAYER GUESSES     \n\n";
    cout << "Instructions:\n";
-   cout << "Guess a number between 1 and 100\n";
+   cout << "Guess a number between 1 and 100.\n";
    cout << "If you are too low, it will tell you.\n";
    cout << "If you are too high, it will tell you.\n";
    cout << "Once you guess the right number, the\n";
@@ -108,10 +116,11 @@ void youVsCom () {
 
             } else {
                
-               // Reminds players that input must be valid
-               system("clear");
-               cout << "The number " << guessNumber << " is an invalid input!\n";
+               cin.clear();
+               cin.ignore(numeric_limits<streamsize>::max(),'\n');
 
+               system("clear");
+                             
             }
 
          } while (guessNumber < 1 || guessNumber > 100); // Loop prevents invalid inputs
@@ -149,6 +158,13 @@ void youVsCom () {
          cout << "Choice? ";
          cin >> actionPrompt1;
 
+         if (actionPrompt1 > 2 || actionPrompt1 < 1) {
+
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(),'\n');
+
+         }
+         
       } while (actionPrompt1 > 2 || actionPrompt1 < 1);   // Loop prevents invalid inputs
 
       // If the player selects 1, the program will loop back to when the number
@@ -169,7 +185,7 @@ void comVsYou() {
 
    // Beginning of program
    system("clear");
-   cout << "\n\n        Computer vs You        \n\n";
+   cout << "\n\n        COMPUTER GUESSES        \n\n";
    cout << "Instructions:\n";
    cout << "The computer will try to guess a number\n";
    cout << "that you are thinking of between 1 and 100.\n";
@@ -198,7 +214,6 @@ void comVsYou() {
          // The computer will make a guess with the statement below based on the
          // lowest number and also the highest number. If the computer fails to 
          // guess the player's number, it will generate a new one. 
-         
          random_device rd;
          mt19937 gen(rd());
          uniform_int_distribution<> dis(low, high);
@@ -221,6 +236,14 @@ void comVsYou() {
             cout << "3 - The number is correct!\n\n";
             cout << "Option: ";
             cin >> isItCorrect;
+
+            if (isItCorrect > 3 || isItCorrect < 1) {
+
+               cin.clear();
+               cin.ignore(numeric_limits<streamsize>::max(),'\n');
+
+            }
+
             firstNum = false;
 
             if ((isItCorrect > 0 && isItCorrect < 4) && isItCorrect != 3) {    
@@ -264,7 +287,14 @@ void comVsYou() {
          cout << "2 - Main menu\n\n";
          cout << "Choice? ";
          cin >> actionPrompt2;
+    
+         if (actionPrompt2 > 2 || actionPrompt2 < 1) {
 
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(),'\n');
+
+         }
+         
       } while (actionPrompt2 > 2 || actionPrompt2 < 1);
 
       // If the player selects 1, the program will loop back to when the number
