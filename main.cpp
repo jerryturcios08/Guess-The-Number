@@ -11,6 +11,7 @@
 #include <ctime>
 using namespace std;
 
+// Function prototypes declared below
 void youVsCom();  // Player guesses number
 void comVsYou();  // Computer guesses player's number
 
@@ -21,9 +22,11 @@ int main() {
 
    do {
 
+      system("clear");
+
       do {
 
-         system("clear");
+         // Main menu display
          cout << "\n\n     GUESS THE NUMBER     \n\n";
          cout << "     By Jerry Turcios     \n";
          cout << "       Version  3.0     \n";
@@ -38,6 +41,8 @@ int main() {
 
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(),'\n');
+            system("clear");
+            cout << "\n\n     [Invalid input!]     ";
 
          }
         
@@ -118,8 +123,8 @@ void youVsCom () {
                
                cin.clear();
                cin.ignore(numeric_limits<streamsize>::max(),'\n');
-
                system("clear");
+               cout << "Invalid input!\n";
                              
             }
 
@@ -148,10 +153,11 @@ void youVsCom () {
 
       }  // Keep looping until the right number is guessed
 
+      system("clear");
+
       do {
 
          // Occurs after player wins a game
-         system("clear");
          cout << "Please select an option:\n\n";
          cout << "1 - Play again\n";
          cout << "2 - Main menu\n\n";
@@ -162,6 +168,8 @@ void youVsCom () {
 
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(),'\n');
+            system("clear");
+            cout << "Invalid input!\n";
 
          }
          
@@ -178,12 +186,12 @@ void youVsCom () {
 void comVsYou() {
 
    // Data declarations
-   int guessNumberC;
-   int numOfGuessesC;    // Number of guesses the computer made 
-   int isItCorrect = 0;  // Used to verify if the computer guessed the right number
-   int actionPrompt2; // Needed for action prompt for this mode
+   int guessNumberC;       // Number the computer guesses
+   int numOfGuessesC;      // Number of guesses the computer made 
+   int isItCorrect = 0;    // Used to verify if the computer guessed the right number
+   int actionPrompt2;      // Needed for action prompt for this mode
 
-   // Beginning of program
+   // Title with instructions
    system("clear");
    cout << "\n\n        COMPUTER GUESSES        \n\n";
    cout << "Instructions:\n";
@@ -221,13 +229,14 @@ void comVsYou() {
          // Assigns random number to guessNumberC
          guessNumberC = dis(gen); 
 
+         system("clear");
+
          do {
 
             if (firstNum)        // Increases count when it is the first number
                ++numOfGuessesC;  // because the computer already made a guess!!
 
             // Shows how many guesses were made and choice to make 
-            system("clear");
             cout << "Number of guesses so far: " << numOfGuessesC << endl;
             cout << "The computer guesses the number " << guessNumberC << ".\n\n";
             cout << "Is the number correct?\n\n";
@@ -241,7 +250,9 @@ void comVsYou() {
 
                cin.clear();
                cin.ignore(numeric_limits<streamsize>::max(),'\n');
-
+               system("clear");
+               cout << "Invalid input!\n";
+            
             }
 
             firstNum = false;
@@ -278,10 +289,11 @@ void comVsYou() {
 
       } while (isItCorrect != 3);   // Program loops until the correct number has been guessed
       
+      system("clear");
+
       do {
 
          // Occurs after player wins a game
-         system("clear");
          cout << "Please select an option:\n\n";
          cout << "1 - Play again\n";
          cout << "2 - Main menu\n\n";
@@ -292,6 +304,8 @@ void comVsYou() {
 
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(),'\n');
+            system("clear");
+            cout << "Invalid input!\n";
 
          }
          
