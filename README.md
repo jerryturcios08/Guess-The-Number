@@ -1,7 +1,7 @@
 # Guess The Number
 By Jerry Turcios
 
-Version 3.0
+Version 3.5
 
 Features:
 1. Two modes
