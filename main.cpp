@@ -1,7 +1,7 @@
 //
-// Title : Guess the number (Version 3.0)
+// Title : Guess the number (Version 3.5)
 // Author: Jerry Turcios
-// DLM   : 11/13/2017
+// DLM   : 11/22/2017
 //
 
 #include <iostream>
@@ -29,7 +29,7 @@ int main() {
          // Main menu display
          cout << "\n\n     GUESS THE NUMBER     \n\n";
          cout << "     By Jerry Turcios     \n";
-         cout << "       Version  3.0     \n";
+         cout << "       Version  3.5     \n";
          cout << "\n\nSelect a game mode:\n\n";
          cout << "1 - Player guesses\n";
          cout << "2 - Computer guesses\n";
